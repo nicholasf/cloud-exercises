@@ -2,11 +2,14 @@ import { app, InvocationContext, Timer } from '@azure/functions';
 
 export async function timerTrigger1(timer: Timer, context: InvocationContext): Promise<void> {
     context.log('Timer function processed request.');
-    context.log('timer: ', timer);
+    console.log('***');
 }
 
 app.timer('timerTrigger1', {
     runOnStartup: true, // only use for dev
-    schedule: '* * * * * *', // Runs every 10 seconds
+    schedule: '* * * * * *', 
     handler: timerTrigger1,
 });
+
+
+    // schedule: process.env.APP_SCHEDULE, 
